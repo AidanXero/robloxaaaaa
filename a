@@ -347,7 +347,7 @@ user.InputBegan:Connect(function(Input, GPE)
 			    Method = "POST",
 			    Headers = {
 			        ["Content-Type"] = "application/json",
-			        ["Authorization"] = "Bearer YOUR_GROQ_API_KEY"
+			        ["Authorization"] = "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"
 			    },
 			    Body = {
 			        model = "llama3-8b-8192",
@@ -370,11 +370,8 @@ user.InputBegan:Connect(function(Input, GPE)
 			end
 
 			isGenerating = false
-			local Msg = (Result.choices and Result.choices[1] or { message = { content = "Unable to fetch reply :(" } }).message.content or "No content???"
-			table.insert(messages, {
-				role = "system",
-				content = Msg
-			})
+			local Msg = Result.choices[1].message.content
+
 
 			Response.Message.Text = richText(Msg);
 			currentOffset += Response.AbsoluteSize.Y
