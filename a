@@ -343,16 +343,19 @@ user.InputBegan:Connect(function(Input, GPE)
 			end)
 
 			local Data = {
-        Url = "https://api.deepinfra.com/v1/openai/chat/completions",
-        Method = "POST",
-        Headers = {
-          ["Content-Type"] = "application/json"
-        },
-        Body = {
-            model = "meta-llama/Meta-Llama-3.1-8B-Instruct",
-          messages = messages
-        }
-      }
+			    Url = "https://api.groq.com/openai/v1/chat/completions",
+			    Method = "POST",
+			    Headers = {
+			        ["Content-Type"] = "application/json",
+			        ["Authorization"] = "Bearer YOUR_GROQ_API_KEY"
+			    },
+			    Body = {
+			        model = "llama3-8b-8192",
+			        messages = messages,
+			        max_tokens = 200
+			    }
+			}
+
 
 
 			local Result;
